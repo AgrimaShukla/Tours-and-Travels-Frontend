@@ -1,0 +1,27 @@
+<div class="outer">
+<div class="card-display">
+    <div *ngFor="let itinerary of itineraries"
+    class="card-display-item">
+    <!-- <p-card
+        header="{{ package.package_name }}"
+        > -->
+        <!-- <p-card
+            header="{{ package.duration }}"
+        > -->
+        <p-card
+        header="{{ itinerary.city }}"
+        >
+        
+        <ng-template pTemplate="header">
+            <img
+            alt="Card image"
+            src="../../assets/tour.jpg"
+            />
+        </ng-template>
+        
+    </p-card>
+</div>
+<p-button label="Book Package" (click)="bookPackage()"></p-button>
+</div>
+</div>
+<router-outlet></router-outlet>

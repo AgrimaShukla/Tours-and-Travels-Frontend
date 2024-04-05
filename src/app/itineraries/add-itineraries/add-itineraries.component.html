@@ -1,0 +1,37 @@
+<!-- <div class="image-background"> -->
+    <p-dialog  (onHide)= 'onClose()' [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}">
+        <div class="outer">
+       
+            <form [formGroup]="itineraryForm" (ngSubmit)="onSubmit(itineraryForm)">
+                <p-card header="New Itinerary">
+                <div class="field">
+                    <input type="number" pInputText formControlName="day" placeholder="Day"/>
+                    <small *ngIf="itineraryForm.controls['day'].invalid && itineraryForm.controls['day'].touched"
+                    class="p-error">
+                        Please enter valid Day
+                    </small>
+                </div>
+
+                <div class="field">
+                    <input type="text" pInputText formControlName="city" name="city" placeholder="City"/>
+                    <small *ngIf="itineraryForm.controls['city'].invalid  && itineraryForm.controls['city'].touched"
+                    class="p-error">
+                        Please enter a valid City
+                    </small>
+                </div>
+                <div class="field">
+                    <input type="text" pInputText formControlName="description" name="description" placeholder="Description"/>
+                    <small *ngIf="itineraryForm.controls['description'].invalid  && itineraryForm.controls['description'].touched"
+                    class="p-error">
+                        Please enter a valid Description
+                    </small>
+                </div>
+               
+                <div class="field">
+                    <p-button label="Submit" 
+                    [disabled]="itineraryForm.invalid" type="Submit"></p-button>
+                </div>
+            </p-card>
+            </form>
+            </div>
+    </p-dialog>

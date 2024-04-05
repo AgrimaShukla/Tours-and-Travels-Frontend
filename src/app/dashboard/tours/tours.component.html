@@ -1,0 +1,31 @@
+<div class="card-display" *ngIf="display">
+    <div *ngFor="let package of packages"
+        class="card-display-item">
+        <!-- <p-card
+        header="{{ package.package_name }}"
+        > -->
+        <!-- <p-card
+        header="{{ package.duration }}"
+        > -->
+        <p-card
+        header="{{ package.category }}"
+        >
+        <!-- <p>{{package.duration}}</p> -->
+        <ng-template pTemplate="header">
+            <img
+            alt="Card image"
+            src="../../assets/tour.jpg"
+            />
+        </ng-template>
+        <ng-template pTemplate="footer">
+            
+            <p-button label="Visit"
+                (click)="onVisitClick(package.package_name, package.category, package.duration, package.package_id)"></p-button>
+            </ng-template>
+        </p-card>
+    </div>
+    </div>
+
+<div *ngIf="status">
+    <app-tour-list [singlePackage]="packageItems"></app-tour-list>
+</div>

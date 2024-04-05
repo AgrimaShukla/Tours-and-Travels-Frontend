@@ -1,0 +1,74 @@
+<!-- <div class="image-background"> -->
+    <div class="background">
+        <div class="inner">
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm)">
+            <p-card header="Signup" [style]="{
+                backgroundColor: '#FFAE42',
+                width: '450px',
+                borderRadius: '15px',
+                color: 'white',
+                height: '670px',
+                
+            }">
+            <div class="field">
+                <input type="text" pInputText formControlName="username"  name="Username" placeholder="Username"/>
+                <small *ngIf="signUpForm.controls['username'].invalid && (signUpForm.controls['username'].dirty || signUpForm.controls['username'].touched)"
+                class="p-error">
+                    Please enter a valid Username
+                </small>
+            </div>
+            <div class="field">
+                <input type="password" pInputText formControlName="password" name="password" placeholder="Password"/>
+                <small *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)"
+                class="p-error">
+                    Please enter a valid Password
+                </small>
+            </div>
+            <div class="field">
+                <input type="text" pInputText formControlName="name" name="name" placeholder="Name"/>
+                <small *ngIf="signUpForm.controls['name'].invalid && (signUpForm.controls['name'].dirty || signUpForm.controls['name'].touched)"
+                class="p-error">
+                    Please enter a valid Name
+                </small>
+            </div>
+            <div class="field">
+                <input type="text" pInputText formControlName="mobile_number" name="mobile_number" placeholder="Mobile Number"/>
+                <small *ngIf="signUpForm.controls['mobile_number'].invalid && (signUpForm.controls['mobile_number'].dirty || signUpForm.controls['mobile_number'].touched)"
+                class="p-error">
+                    Please enter a valid Mobile Number
+                </small>
+            </div>
+            <div class="field">
+                <input type="text" pInputText formControlName="gender" name="gender" placeholder="gender"/>
+                <small *ngIf="signUpForm.controls['gender'].invalid && (signUpForm.controls['gender'].dirty || signUpForm.controls['gender'].touched)"
+                class="p-error">
+                    Please enter a valid Gender
+                </small>
+            </div>
+            
+            <div class="field">
+                <input type="text" pInputText formControlName="age" name="age" placeholder="Age"/>
+                <small *ngIf="signUpForm.controls['age'].invalid && (signUpForm.controls['age'].dirty || signUpForm.controls['age'].touched)"
+                class="p-error">
+                    Please enter a valid Age
+                </small>
+            </div>
+            <div class="field">
+                <input type="email" pInputText formControlName="email" name="email" placeholder="Email"/>
+                <small *ngIf="signUpForm.controls['email'].invalid && (signUpForm.controls['email'].dirty || signUpForm.controls['email'].touched)"
+                class="p-error">
+                    Please enter a valid Email
+                </small>
+            </div>
+            <div class="field">
+                <p-button label="SignUp" 
+                [disabled]="signUpForm.invalid" type="Submit"></p-button>
+            </div>
+            <div class="mt-2">
+                Already have an account? <a routerLink="/login">Login</a>
+            </div>
+        </p-card>
+        </form>
+    </div>
+    <img src="../../../assets/main page.png" alt="" />
+</div>

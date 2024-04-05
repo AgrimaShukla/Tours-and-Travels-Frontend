@@ -1,0 +1,46 @@
+<p-dialog  (onHide)= 'onClose()' [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}">
+    <div class="outer">
+       
+    
+        <form [formGroup]="packageForm" (ngSubmit)="onSubmit(packageForm)">
+            <p-card header="Package Details">
+            <div class="field">
+                <label for="packageName">Package Name</label>
+                <input type="text" pInputText formControlName="packageName"  name="packageName" placeholder="Package Name"/>
+            </div>
+            <div class="field">
+                <label for="duration">Duration</label>
+                <input type="text" pInputText formControlName="duration" name="duration" placeholder="Duration"/>
+            </div>
+            <div class="field">
+                <label for="category">Category</label>
+                <input type="text" pInputText formControlName="category" name="category" placeholder="category"/>
+            </div>
+            <div class="field">
+                <label for="price">Price</label>
+                <input type="number" pInputText formControlName="price" name="price" placeholder="price"/>
+            </div>
+            <div class="field">
+                
+                 <div class="p-field-radiobutton">
+                    <label for="status">Status: </label>
+                    <p-radioButton
+                        id="status"
+                        *ngFor="let stat of status"
+                        formControlName="status"
+                        [value]="stat"
+                        [label]="stat"
+                        name="status"
+                        class="radio-button"
+                    ></p-radioButton>
+
+                </div>
+            <div class="field">
+                <p-button label="Submit" 
+                [disabled]="packageForm.invalid" type="Submit"></p-button>
+                
+            </div>
+        <!-- </p-card>
+        </form>
+        </div>
+</p-dialog> -->

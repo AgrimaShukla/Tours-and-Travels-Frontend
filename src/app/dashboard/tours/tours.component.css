@@ -1,0 +1,44 @@
+card-display{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+ 
+:host ::ng-deep .p-card{
+    color: black;
+    height: 350px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+}
+ 
+:host ::ng-deep img {
+    width: 20em;
+    height: 14em;
+}
+ 
+:host ::ng-deep .p-card-header {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+ 
+:host ::ng-deep .p-card-body .p-card-footer{
+    padding: 0px;
+}
+ 
+:host ::ng-deep .p-card-content{
+    display: none;
+}
+ 
+@media only screen and (max-width: 767px) {
+    :host ::ng-deep .p-card {
+        max-width: none;
+     
+    }
+}

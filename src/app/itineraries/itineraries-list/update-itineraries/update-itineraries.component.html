@@ -1,0 +1,26 @@
+<p-dialog  (onHide)= 'onClose()' [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}">
+    <div class="outer">
+       
+    
+        <form [formGroup]="itineraryForm" (ngSubmit)="onSubmit(itineraryForm)">
+            <p-card header="Itinerary Details">
+            <div class="field">
+                <label for="city">city</label>
+                <input type="text" pInputText formControlName="city"  name="city" placeholder="City"/>
+            </div>
+            <div class="field">
+                <label for="day">Day</label>
+                <input type="number" pInputText formControlName="day" name="day" placeholder="Day"/>
+            </div>
+            <div class="field">
+                <label for="description">Description</label>
+                <input type="text" pInputText formControlName="description" name="description" placeholder="Description"/>
+            </div>
+            <div class="field">
+                <p-button label="Submit" 
+                [disabled]="itineraryForm.invalid" type="Submit"></p-button>
+            
+        <!-- </p-card>
+        </form>
+        </div>
+</p-dialog> -->

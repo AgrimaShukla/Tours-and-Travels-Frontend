@@ -1,0 +1,31 @@
+.background{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60vh;
+    
+      
+}
+
+.inner{
+    /* text-align: center; */
+    width: 30%;
+}
+
+
+.field{
+    margin-bottom: 1.5rem;
+}
+
+input{
+    width: 99%;
+}
+
+p-card[header]{
+    width: 360px;
+    /* text-align: center; */
+}
+
+label{
+    color: white;
+}

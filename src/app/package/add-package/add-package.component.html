@@ -1,0 +1,75 @@
+<!-- <div class="image-background"> -->
+<p-dialog  (onHide)= 'onClose()' [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}">
+    <div class="outer">
+   
+        <form [formGroup]="packageForm" (ngSubmit)="onSubmit(packageForm)">
+            <p-card header="New Package">
+            <div class="field">
+                <input type="text" pInputText formControlName="packageName" placeholder="Package Type"/>
+                <small *ngIf="packageForm.controls['packageName'].invalid && packageForm.controls['packageName'].touched"
+                class="p-error">
+                    Please enter a valid Package Type
+                </small>
+            </div>
+            <div class="field">
+                <div class="p-field-radiobutton">
+                    <!-- <label for="duration">Duration: </label> -->
+                    <!-- <p-radioButton
+                        *ngFor="let duration of durations"
+                        formControlName="duration"
+                        [value]="duration"
+                        label="duration"
+                        name="duration"
+                        class="radio-button"
+                    ></p-radioButton> -->
+                    <input type="text" pInputText formControlName="duration" placeholder="Duration"/>
+                    <small *ngIf="packageForm.controls['duration'].invalid && packageForm.controls['duration'].touched"
+                    class="p-error">
+                    Please enter valid Duration
+                </small>
+                </div>
+            </div>
+            <div class="field">
+                <div class="p-field-radiobutton">
+                    <label for="category">Category: </label>
+                    <p-radioButton
+                        *ngFor="let category of categories"
+                        formControlName="category"
+                        [value]="category"
+                        [label]="category"
+                        name="category"
+                        class="radio-button"
+                    ></p-radioButton>
+                </div>
+            </div>
+            <div class="field">
+                <input type="text" pInputText formControlName="price" name="price" placeholder="Price"/>
+                <small *ngIf="packageForm.controls['price'].invalid  && packageForm.controls['price'].touched"
+                class="p-error">
+                    Please enter a valid Price
+                </small>
+            </div>
+            <div class="field">
+                <div class="p-field-radiobutton">
+                    <label for="status">Status: </label>
+                    <p-radioButton
+                        id="status"
+                        *ngFor="let stat of status"
+                        formControlName="status"
+                        [value]="stat"
+                        [label]="stat"
+                        name="status"
+                        class="radio-button"
+                    ></p-radioButton>
+
+                </div>
+            </div>
+           
+            <div class="field">
+                <p-button label="Submit" 
+                [disabled]="packageForm.invalid" type="Submit"></p-button>
+            </div>
+        </p-card>
+        </form>
+        </div>
+</p-dialog>

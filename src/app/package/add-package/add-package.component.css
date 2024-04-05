@@ -1,0 +1,23 @@
+:host ::ng-deep .p-dialog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+
+:host ::ng-deep .p-radioButton-label-active{
+    color: #FFAE42;
+} 
+
+.field{
+    padding: 5px;
+}
+
+input{
+    width: 99%;
+}
+
+p-card[header]{
+    width: 360px;
+    text-align: center;
+}

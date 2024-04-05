@@ -1,0 +1,39 @@
+
+<div class="outer">
+<p-table
+    [value]="bookings"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[5, 10, 20]"
+>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:25%">Booking Date</th>
+            <th style="width:25%">Booking Id</th>
+            <th style="width:25%">Name</th>
+            <th style="width:25%">Email</th>
+            <th style="width:25%">Start date</th>
+            <th style="width:25%">End date</th>
+            <th style="width:25%">Mobile number</th>
+            <th style="width:25%">Number of people</th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bookings>
+        <tr>
+            <td>{{ bookings.booking_date }}</td>
+            <td>{{ bookings.booking_id }}</td>
+            <td>{{ bookings.name }}</td>
+            <td>{{ bookings.email }}</td>
+            <td>{{ bookings.start_date }}</td>
+            <td>{{ bookings.end_date }}</td>
+            <td>{{ bookings.mobile_number }}</td>
+            <td>{{ bookings.no_of_people }}</td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
+

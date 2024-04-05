@@ -1,16 +1,37 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenubarModule } from 'primeng/menubar';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthInterceptorService } from './auth/auth.interceptor';
+import { UserProfileModule } from './profile/user-profile/user-profile.module';
+import { SharedModule } from './shared/shared.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastModule } from 'primeng/toast';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent, 
+    ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule, 
+    MenubarModule,
+    ToastModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    SharedModule,
+    AuthModule,
+    HttpClientModule,
+    UserProfileModule,
+    DashboardModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,25 @@
+
+<div class="card-display" *ngIf="display">
+    <div *ngFor="let package of packageName"
+        class="card-display-item">
+        <p-card
+        header="{{ package.package_name }}"
+        >
+        <ng-template pTemplate="header">
+            <img
+            alt="Card image"
+            src="../../assets/tour.jpg"
+            />
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <p-button label="Visit"
+            (click)="onVisitClick(package.package_name)"></p-button>
+        </ng-template>
+        </p-card>
+    </div>
+    </div>
+
+<div *ngIf="status">
+
+    <app-tours [packageValue]="currentPackage"></app-tours>
+</div>
