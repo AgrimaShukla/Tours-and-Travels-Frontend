@@ -1,0 +1,61 @@
+
+.card-display{
+    display: flex;
+    justify-content: center;
+}
+ 
+:host ::ng-deep .p-card{
+    color: black;
+    height: 350px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+}
+ 
+:host ::ng-deep img {
+    width: 20em;
+    height: 14em;
+}
+ 
+:host ::ng-deep .p-card-header {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+:host ::ng-deep .p-card-title{
+    font-family: 'Times New Roman', Times, serif;
+}
+ 
+:host ::ng-deep .p-card-body{
+    
+    text-align: center;
+    margin-top: auto;
+}
+
+:host ::ng-deep .p-card-body .p-button{
+    background-color: #FFAE42; 
+    border: none; 
+    color: white; 
+    padding: 15px 30px; 
+    text-align: center; 
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+    transition-duration: 0.4s; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+}
+ 
+@media only screen and (max-width: 767px) {
+    :host ::ng-deep .p-card {
+        max-width: none;
+     
+    }
+}
+

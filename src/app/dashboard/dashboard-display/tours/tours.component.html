@@ -1,3 +1,4 @@
+
 <div class="card-display" *ngIf="display">
     <div *ngFor="let package of packages"
         class="card-display-item">
@@ -10,6 +11,8 @@
         <p-card
         header="{{ package.category }}"
         >
+        <p id="para">{{ package.duration }}</p>
+
         <!-- <p>{{package.duration}}</p> -->
         <ng-template pTemplate="header">
             <img

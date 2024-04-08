@@ -2,6 +2,10 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PackageService } from '../package.service';
 import { Router } from '@angular/router';
+import { SuccessResponseInterface } from '../../shared/interface/successResponse.interface';
+import { AddPackage } from '../interfaces/add-package.interface';
+import { MessageService } from 'primeng/api';
+import { CustomErrorResponse, ErrorResponse } from '../../shared/interface/errorResponse.interface';
 
 @Component({
   selector: 'app-add-package',
@@ -11,6 +15,7 @@ import { Router } from '@angular/router';
 export class AddPackageComponent {
   packageService = inject(PackageService);
   router = inject(Router);
+  messageService = inject(MessageService);
 
   packageForm: FormGroup;
   durations: string[];
@@ -40,7 +45,22 @@ export class AddPackageComponent {
     const category = form.value.category;
     const price = form.value.price;
     const status = form.value.status;
-    this.packageService.postPackages(packageName, duration, category, price, status).subscribe();
+    this.packageService.postPackages(packageName, duration, category, price, status).subscribe({
+      next: (data: SuccessResponseInterface<[AddPackage]>) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: data.message,
+        });
+      },
+      error: (error: ErrorResponse<CustomErrorResponse>) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.error.description,
+        });
+      }
+    });
     this.visible = false;
   }
 

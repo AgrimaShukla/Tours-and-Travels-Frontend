@@ -6,32 +6,28 @@
 
 :host ::ng-deep .p-menubar { 
   background-color: #FFAE42;
-  
-  /* border-style: solid;  */
 }
+
+:host::ng-deep p-menubarsub {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 .outer{
     padding: 0px;    
 }
 
-:host ::ng-deep .p-button {
+.button-style{
   background-color: black;
-  color: white;
-  width: 70px;
-  height: 40px;
+  border: none; 
+  color: white; 
+  padding: 15px 30px; 
+  text-align: center; 
+  font-size: 16px; 
+  cursor: pointer; 
+  border-radius: 8px; 
+  transition-duration: 0.4s; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
 }
-
-:host ::ng-deep .p-menu{ 
-  background: #0da350 ; 
-}
-
-:host ::ng-deep .p-menu .p-menuitem-link .p-menuitem-text { 
-  color: #000 !important; 
-} 
-:host ::ng-deep .p-menu .p-menuitem-link .p-menuitem-icon { 
-  color: #000 !important; 
-} 
-:host ::ng-deep .p-menu .p-submenu-header{ 
-  color: #000 !important; 
-  background: #0da350 !important; 
-} 

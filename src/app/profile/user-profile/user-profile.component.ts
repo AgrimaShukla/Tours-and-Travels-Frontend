@@ -2,6 +2,10 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserProfile } from './user-profile.service';
 import { Router } from '@angular/router';
+import { SuccessResponseInterface } from '../../shared/interface/successResponse.interface';
+import { UserInterface } from './interfaces/user.interface';
+import { MessageService } from 'primeng/api';
+import { CustomErrorResponse, ErrorResponse } from '../../shared/interface/errorResponse.interface';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,10 +14,12 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent {
   userForm: FormGroup;
-  userData: any;
+  userData: UserInterface;
   userId: string;
-  profileService = inject(UserProfile)
-  route = inject(Router)
+  profileService = inject(UserProfile);
+  route = inject(Router);
+  messageService = inject(MessageService);
+
   ngOnInit(){
     this.userForm = new FormGroup({
       'name': new FormControl(null, [Validators.required]),
@@ -22,7 +28,7 @@ export class UserProfileComponent {
       'age': new FormControl(null, [Validators.required]),
       'email': new FormControl(null, [Validators.required])
     });
-    // console.log(JSON.parse(sessionStorage.getItem('userData')))
+
     this.userData = JSON.parse(sessionStorage.getItem("userData"));
 
     this.userForm.setValue({
@@ -34,19 +40,36 @@ export class UserProfileComponent {
     })
   }
 
-  onSubmit(form){
-
-  }
-
   updateUser(form){
     // console.log(JSON.parse(sessionStorage.getItem('userData')).customer_id)
     this.userId = JSON.parse(sessionStorage.getItem('userData')).customer_id;
-    this.profileService.updateUser(form.value.name, form.value.mobileNumber, form.value.gender, form.value.age, form.value.email, this.userId).subscribe();
+    this.profileService.updateUser(form.value.name, form.value.mobileNumber, form.value.gender, form.value.age, form.value.email, this.userId).subscribe({
+      next: (data: SuccessResponseInterface<null>) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: data.message
+        });
+      },
+      error: (error: ErrorResponse<CustomErrorResponse>) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.error.description
+        });
+      }
+    });
     this.profileService.getUser().subscribe({
-      next: (data: any) =>{
-        console.log(data.data)
-        sessionStorage.setItem('userData', JSON.stringify(data.data))
-        this.route.navigate['profile']
+      next: (data: SuccessResponseInterface<UserInterface>) =>{
+        sessionStorage.setItem('userData', JSON.stringify(data.data));
+        this.route.navigate['profile'];
+      },
+      error: (error: ErrorResponse<CustomErrorResponse>) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.error.description,
+        });
       }
     })
     

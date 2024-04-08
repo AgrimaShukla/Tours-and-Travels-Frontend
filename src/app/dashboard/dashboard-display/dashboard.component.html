@@ -1,4 +1,4 @@
-
+<div class="outer">
 <div class="card-display" *ngIf="display">
     <div *ngFor="let package of packageName"
         class="card-display-item">
@@ -11,14 +11,12 @@
             src="../../assets/tour.jpg"
             />
         </ng-template>
-        <ng-template pTemplate="footer">
-            <p-button label="Visit"
-            (click)="onVisitClick(package.package_name)"></p-button>
-        </ng-template>
+        <p-button label="Visit"
+        (click)="onVisitClick(package.package_name)"></p-button>
         </p-card>
     </div>
     </div>
-
+</div>
 <div *ngIf="status">
 
     <app-tours [packageValue]="currentPackage"></app-tours>

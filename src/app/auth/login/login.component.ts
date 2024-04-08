@@ -4,6 +4,10 @@ import { AuthService } from '../auth.service';
 import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { SuccessResponseInterface } from '../../shared/interface/successResponse.interface';
+import { LoginInterface } from '../interfaces/login.interface';
+import { UserInterface } from '../../profile/user-profile/interfaces/user.interface';
+import { CustomErrorResponse, ErrorResponse } from '../../shared/interface/errorResponse.interface';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +37,7 @@ export class LoginComponent implements OnInit{
     const password = form.value.password;
     
     this.authService.login(username, password).subscribe({
-      next: (result: any) => {
+      next: (result: SuccessResponseInterface<[LoginInterface]>) => {
         sessionStorage.setItem('accessToken', result.data[0].access_token)
         sessionStorage.setItem('refreshToken', result.data[0].refresh_token)
         this.messageService.add({
@@ -42,7 +46,7 @@ export class LoginComponent implements OnInit{
           detail: result.message,
         });
       },
-      error: (error) =>{
+      error: (error: ErrorResponse<CustomErrorResponse>) =>{
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
@@ -53,25 +57,28 @@ export class LoginComponent implements OnInit{
    
     if(sessionStorage.getItem('accessToken')){
       this.userService.getRole().subscribe({
-        next: (userData: any) => {
+        next: (userData: SuccessResponseInterface<UserInterface>) => {
+          console.log(userData)
           sessionStorage.setItem('userData', JSON.stringify(userData.data))
-          this.role = JSON.parse(sessionStorage.getItem('userData')).role
+          // this.userService.user.next(userData.data);
+          this.role = JSON.parse(sessionStorage.getItem('userData')).role;
+          console.log(this.role)
           if(this.role == 'admin'){
             this.router.navigate(['/packages'])
           }
           else if(this.role == 'user'){
             this.router.navigate(['/dashboard'])
           }
-        }
+        },
+        error: (error: ErrorResponse<CustomErrorResponse>) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: error.error.description,
+            });
+          }
       })
     }
-
-
-    // if(FormControl.v)
-    this.authService.login
   }
-  // onSwitchMode(){
-  //   this.isLoginMode = !this.isLoginMode;
-  //   }
 }
 

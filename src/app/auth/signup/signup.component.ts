@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { SuccessResponseInterface } from '../../shared/interface/successResponse.interface';
+import { SignupInterface } from '../interfaces/signup.interface';
+import { CustomErrorResponse, ErrorResponse } from '../../shared/interface/errorResponse.interface';
 
 @Component({
   selector: 'app-signup',
@@ -36,13 +39,20 @@ export class SignupComponent {
     const age = form.value.age;
     const email = form.value.email;
     this.authService.signUp(username, password, name, mobile_number, gender, age, email).subscribe({
-      next: (response: any) => {
+      next: (response: SuccessResponseInterface<[SignupInterface]>) => {
         this.messageService.add({
           severity: 'success',
           summary: 'Sucess',
           detail: response.message,
         });
         this.router.navigate(['login'])
+      },
+      error: (error: ErrorResponse<CustomErrorResponse>) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.error.description,
+        });
       }
     });
 

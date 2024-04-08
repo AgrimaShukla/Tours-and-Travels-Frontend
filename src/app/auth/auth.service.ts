@@ -31,7 +31,6 @@ export class AuthService{
     logout(){
         return this.http.post('http://localhost:5000/v1/logout',{}).subscribe({
             next: () => {
-                console.log('here')
                 sessionStorage.clear()
                 this.router.navigate(['login']);
                 

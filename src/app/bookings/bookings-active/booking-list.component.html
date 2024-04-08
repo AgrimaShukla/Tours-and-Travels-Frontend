@@ -19,7 +19,8 @@
             <th style="width:25%">End date</th>
             <th style="width:25%">Mobile number</th>
             <th style="width:25%">Number of people</th>
-
+            <th style="width:25%">Update</th>
+            <th style="width:25%">Cancel</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-bookings>
@@ -32,8 +33,14 @@
             <td>{{ bookings.end_date }}</td>
             <td>{{ bookings.mobile_number }}</td>
             <td>{{ bookings.no_of_people }}</td>
+            <td><button (click)="update(bookings)">Update</button></td>
+            <td><button (click)="cancel(bookings)">Cancel</button></td>
+
         </tr>
     </ng-template>
 </p-table>
 </div>
 
+<div *ngIf="updated">
+    <app-update-bookings [booking]="currentBooking"></app-update-bookings>
+</div>

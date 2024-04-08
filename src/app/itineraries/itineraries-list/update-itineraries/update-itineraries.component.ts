@@ -1,6 +1,9 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Inject, Input, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItineraryService } from '../../itineraries.service';
+import { SuccessResponseInterface } from '../../../shared/interface/successResponse.interface';
+import { MessageService } from 'primeng/api';
+import { CustomErrorResponse, ErrorResponse } from '../../../shared/interface/errorResponse.interface';
 
 @Component({
   selector: 'app-update-itineraries',
@@ -12,6 +15,7 @@ export class UpdateItinerariesComponent {
   itineraryForm: FormGroup;
   @Input() itinerary: any;
   itineraryService = inject(ItineraryService);
+  messageService = inject(MessageService);
   visible: boolean = true;
 
   ngOnInit(){
@@ -33,7 +37,22 @@ export class UpdateItinerariesComponent {
     const description = form.value.description;
     const day = form.value.day;
     const itinerary_id = this.itinerary.itinerary_id;
-    this.itineraryService.updateItinerary(city, day, description, itinerary_id).subscribe();
+    this.itineraryService.updateItinerary(city, day, description, itinerary_id).subscribe({
+      next: (data: SuccessResponseInterface<null>) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: data.message,
+        });
+      },
+      error: (error: ErrorResponse<CustomErrorResponse>) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.error.description,
+        });
+      }
+    });
     this.visible = false;
   }
 

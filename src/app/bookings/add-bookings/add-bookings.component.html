@@ -1,8 +1,7 @@
-<p-dialog  (onHide)= 'onClose()' [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}">
-    <div class="outer">
+<p-dialog  (onHide)= 'onClose()' [(visible)]="visible" [modal]="true" [style]="{height: '45vw', width: '43vw'}">
    
-        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit(bookingForm)">
-            <p-card header="New Bookings">
+        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit(bookingForm)" id="form-style">
+            <p-card header="New Bookings" >
             <div class="field">
                 <input type="text" pInputText formControlName="name" placeholder="Name"/>
                 <small *ngIf="bookingForm.controls['name'].invalid && bookingForm.controls['name'].touched"
@@ -21,13 +20,6 @@
             <div class="field">
                 <input type="date" pInputText formControlName="startDate" name="startDate" placeholder="Start Date"/>
                 <small *ngIf="bookingForm.controls['startDate'].invalid  && bookingForm.controls['startDate'].touched"
-                class="p-error">
-                    Please enter a valid Date
-                </small>
-            </div>
-            <div class="field">
-                <input type="date" pInputText formControlName="endDate" name="endDate" placeholder="End Date"/>
-                <small *ngIf="bookingForm.controls['endDate'].invalid  && bookingForm.controls['endDate'].touched"
                 class="p-error">
                     Please enter a valid Date
                 </small>
@@ -52,5 +44,5 @@
             </div>
         </p-card>
         </form>
-        </div>
+        
 </p-dialog>

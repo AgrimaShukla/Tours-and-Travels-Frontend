@@ -2,9 +2,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 60vh;
-    
-      
+    height: 60vh;     
 }
 
 .inner{
@@ -12,6 +10,24 @@
     width: 30%;
 }
 
+:host ::ng-deep .p-button{
+    background-color: black;
+    border: none; 
+    color: white; 
+    padding: 15px 30px; 
+    text-align: center; 
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+    transition-duration: 0.4s; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    margin-left: 125px;
+}
+
+:host ::ng-deep .p-card-body .p-card-title{
+    margin-left: 140px;
+    color: black;
+}
 
 .field{
     margin-bottom: 1.5rem;

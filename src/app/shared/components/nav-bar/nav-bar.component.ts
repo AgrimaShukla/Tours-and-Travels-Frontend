@@ -17,9 +17,14 @@ export class NavBarComponent {
       this.role = JSON.parse(sessionStorage.getItem('userData')).role;
       this.items = [
         {
-          label: 'Profile',
-          icon: 'pi pi-fw pi-user',
-          routerLink: 'profile'
+          label: 'Home',
+          routerLink: 'dashboard',
+          visible: this.role === 'user'
+        },
+        {
+          label: 'Home',
+          routerLink: 'packages',
+          visible: this.role === 'admin'
         },
         {
           label: 'Packages',
@@ -28,10 +33,10 @@ export class NavBarComponent {
             label: 'Get and Update packages',
             routerLink: 'packages'
           },
-        {
-          label: 'Add packages',
-          routerLink: 'packages/new'
-        }]
+          {
+            label: 'Add packages',
+            routerLink: 'packages/new'
+          }]
         },
         {
           label: 'Itineraries',
@@ -40,20 +45,29 @@ export class NavBarComponent {
             label: 'Get and Update Itineraries',
             routerLink: 'itineraries'
           },
-        {
-          label: 'Add Itineraries',
-          routerLink: 'itineraries/new'
-        }]
-        },
-        {
-          label: 'Home',
-          routerLink: 'dashboard'
+          {
+            label: 'Add Itineraries',
+            routerLink: 'itineraries/new'
+          }]
         },
         {
           label: 'Bookings',
           visible: this.role === 'user',
-          routerLink: 'bookings'
-        }
+          items: [{
+            label: 'All Bookings',
+            routerLink: 'bookings'
+          },
+          {
+            label: 'Update or Cancel bookings',
+            routerLink: 'bookings/active'
+          },
+        ]
+      },
+      {
+        label: 'Profile',
+        icon: 'pi pi-fw pi-user',
+        routerLink: 'profile'
+      },
       ]
     }
 

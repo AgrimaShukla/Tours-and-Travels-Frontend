@@ -2,6 +2,10 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItineraryService } from '../itineraries.service';
 import { Router } from '@angular/router';
+import { SuccessResponseInterface } from '../../shared/interface/successResponse.interface';
+import { AddItinerary } from '../interfaces/add-itinerary.interface';
+import { MessageService } from 'primeng/api';
+import { CustomErrorResponse, ErrorResponse } from '../../shared/interface/errorResponse.interface';
 
 @Component({
   selector: 'app-add-itineraries',
@@ -11,6 +15,7 @@ import { Router } from '@angular/router';
 export class AddItinerariesComponent {
 
   itineraryService = inject(ItineraryService);
+  messageService = inject(MessageService);
   itineraryForm: FormGroup;
   visible: boolean = true;
   router = inject(Router)
@@ -27,11 +32,27 @@ export class AddItinerariesComponent {
     const day = form.value.day;
     const city = form.value.city;
     const description = form.value.description;
-    this.itineraryService.postItinerary(city, day, description).subscribe();
+    this.itineraryService.postItinerary(city, day, description).subscribe({
+      next: (data: SuccessResponseInterface<[AddItinerary]>) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: data.message,
+        });
+      }, 
+      error: (error: ErrorResponse<CustomErrorResponse>) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.error.description,
+        });
+      }
+    });
     this.visible = false;
   }
 
   onClose(){
+    this.visible = false;
     this.router.navigate(['itineraries']);
   }
 
