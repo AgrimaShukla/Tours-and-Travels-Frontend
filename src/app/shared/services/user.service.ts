@@ -2,20 +2,12 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
-export interface User{
-    age: string,
-    email: string,
-    gender: string,
-    mobile_number: string,
-    name: string,
-    role: string
-}
 
 @Injectable(
     {providedIn: 'root'}
 )
 export class UserService{
-    user = new BehaviorSubject<User>(null);
+    isLoggedIn = new BehaviorSubject<Boolean>(false);
     constructor(private http: HttpClient){}
 
     getRole(){

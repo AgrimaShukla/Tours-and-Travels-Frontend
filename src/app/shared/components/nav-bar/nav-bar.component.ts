@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,6 +13,8 @@ export class NavBarComponent {
   authService = inject(AuthService);
   items = []
   role: string;
+  userService = inject(UserService);
+  
 
   ngOnInit(){
       this.role = JSON.parse(sessionStorage.getItem('userData')).role;
@@ -72,7 +75,8 @@ export class NavBarComponent {
     }
 
     logoutUser(){
-      this.authService.logout()
+      this.authService.logout();
+      this.userService.isLoggedIn.next(false);
     }
 }
 

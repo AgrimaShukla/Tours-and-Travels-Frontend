@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit{
       next: (result: SuccessResponseInterface<[LoginInterface]>) => {
         sessionStorage.setItem('accessToken', result.data[0].access_token)
         sessionStorage.setItem('refreshToken', result.data[0].refresh_token)
+        this.userService.isLoggedIn.next(true);
         this.messageService.add({
           severity: 'success',
           summary: 'Sucess',
