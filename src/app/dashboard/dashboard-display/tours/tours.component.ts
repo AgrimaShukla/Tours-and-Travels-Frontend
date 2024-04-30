@@ -21,15 +21,9 @@ export class ToursComponent {
   packageItems = {}
   
   ngOnInit(){
-    console.log((this.packageValue))
     this.dashboardService.getPackages(this.packageValue).subscribe({
       next: (data: SuccessResponseInterface<[GetTour]>) => {
         this.packages = data.data;
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: data.message
-        });
       },
       error: (error: ErrorResponse<CustomErrorResponse>) => {
         this.messageService.add({
@@ -48,5 +42,6 @@ export class ToursComponent {
     this.packageItems['category'] = category;
     this.packageItems['duration'] = duration;
     this.packageItems['packageId'] = package_id;
+    console.log(package_id)
   }
 }

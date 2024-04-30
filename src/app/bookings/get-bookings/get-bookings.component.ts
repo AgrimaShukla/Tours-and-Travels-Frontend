@@ -19,11 +19,6 @@ export class GetBookingsComponent {
     this.bookingService.getBookings().subscribe({
       next: (data: SuccessResponseInterface<[GetBookings]>) => {
         this.bookings = data.data;
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: data.message,
-        });
       },
       error: (error: ErrorResponse<CustomErrorResponse>) => {
         this.messageService.add({

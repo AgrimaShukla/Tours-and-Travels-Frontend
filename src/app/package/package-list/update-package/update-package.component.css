@@ -1,20 +1,37 @@
 
-:host ::ng-deep .p-dialog{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
-  
-  .field{
-      padding: 5px;
-  }
-  
-  input{
-      width: 99%;
-  }
-  
-  p-card[header]{
-      width: 360px;
-      text-align: center;
-  }
+:host ::ng-deep .p-dialog-content{
+    width: 50vw;
+
+}
+
+
+:host ::ng-deep .p-card-body{
+    width: 47vw;  
+    height: 35vw;     
+}
+
+.field{
+    margin-bottom: 1.5rem;
+}
+
+input{
+    width: 99%;
+}
+
+p-card[header]{
+    width: 150px;
+    text-align: center;
+}
+
+:host ::ng-deep .field .p-button{
+    background-color: #275657;
+    border: none; 
+    color: white; 
+    padding: 15px 30px; 
+    text-align: center; 
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 8px;
+    margin-left: 36px;
+    margin-top: 16px;
+}

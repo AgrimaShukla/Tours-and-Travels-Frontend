@@ -21,8 +21,8 @@ export class UpdateItinerariesComponent {
   ngOnInit(){
     this.itineraryForm = new FormGroup({
       'day': new FormControl(null, [Validators.required]),
-      'city': new FormControl(null, [Validators.required, Validators.pattern('^([A-Za-z]{2,25}\s*)+')]),
-      'description': new FormControl(null, [Validators.required, Validators.pattern('^([A-Za-z]{2,25}\s*)+')])
+      'city': new FormControl(null, [Validators.required]),
+      'description': new FormControl(null, [Validators.required])
     });
 
     this.itineraryForm.setValue({

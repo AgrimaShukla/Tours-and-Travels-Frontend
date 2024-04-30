@@ -1,32 +1,26 @@
 <div class="background">
+    <img src="../../../assets/Profile.png" alt="">
     <div class="inner">
     
-    <form [formGroup]="userForm" (ngSubmit)="updateUser(userForm)"
-    [style]="{
-        width: '400px',
-        borderRadius: '15px',
-        color: 'white',
-        height: '400px'
-    }">
-        <p-card header="Profile" class='element' [style] = "{backgroundColor: '#FFAE42'}">
+    <form [formGroup]="userForm" (ngSubmit)="updateUser(userForm)">
         <div class="field">
-            <label for="name">Name</label>
+            <label for="name">Name: </label>
             <input type="text" pInputText formControlName="name"  name="name" placeholder="name"/>
         </div>
         <div class="field">
-            <label for="mobileNumber">Mobile number</label>
+            <label for="mobileNumber">Mobille Number: </label>
             <input type="text" pInputText formControlName="mobileNumber" name="mobileNumber" placeholder="mobileNumber"/>
         </div>
         <div class="field">
-            <label for="gender">Gender</label>
+            <label for="gender">Gender: </label>
             <input type="text" pInputText formControlName="gender" name="gender" placeholder="gender"/>
         </div>
         <div class="field">
-            <label for="age">Age</label>
+            <label for="age">Age: </label>
             <input type="text" pInputText formControlName="age" name="age" placeholder="age"/>
         </div>
         <div class="field">
-            <label for="email">Email</label>
+            <label for="email">Email: </label>
             <input type="email" pInputText formControlName="email" name="email" placeholdero="email"/>
         </div>
         <div class="field">
@@ -34,7 +28,6 @@
             [disabled]="userForm.invalid" type="Submit" ></p-button>
             
         </div>
-    </p-card>
     </form>
     </div>
     <!-- </div> -->

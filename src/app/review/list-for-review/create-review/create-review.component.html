@@ -1,0 +1,21 @@
+<p-dialog  (onHide)= 'onClose()' [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}">
+    <div class="outer">
+       
+    
+        <form [formGroup]="reviewForm" (ngSubmit)="onSubmit(reviewForm)">
+            <p-card header="Add Review">
+            <div class="field">
+                <input type="text" pInputText formControlName="name"  name="name" placeholder="Name" class="input-text"/>
+            </div>
+            <div class="field">
+                <textarea placeholder="Write your feedback" formControlName="comment" required class="input-text" rows="15"></textarea>
+            </div>
+            <div class="field">
+                <p-button label="Add comment" 
+                [disabled]="reviewForm.invalid" type="Submit"></p-button>
+                
+            </div>
+        </p-card>
+        </form>
+        </div>
+</p-dialog>

@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
 import { UserService } from '../../services/user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,10 +15,16 @@ export class NavBarComponent {
   items = []
   role: string;
   userService = inject(UserService);
-  
+  location = inject(Location)
+  isLoggedIn: boolean = false;
 
   ngOnInit(){
+
       this.role = JSON.parse(sessionStorage.getItem('userData')).role;
+      this.updateMenu();
+  }
+
+    updateMenu(){
       this.items = [
         {
           label: 'Home',
@@ -65,6 +72,11 @@ export class NavBarComponent {
             routerLink: 'bookings/active'
           },
         ]
+      },
+      {
+        label: 'Post Reviews',
+        visible: this.role === 'user',
+        routerLink: 'reviews/booking'
       },
       {
         label: 'Profile',

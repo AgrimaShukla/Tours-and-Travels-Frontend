@@ -1,32 +1,27 @@
-<!-- <div class="image-background"> -->
+<div class="background-image">
+
 <div class="background">
     <div class="inner">
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
-            <p-card header="Login" [style]="{
-                backgroundColor: '#FFAE42',
-                width: '450px',
-                borderRadius: '15px',
-                color: 'white',
-                height: '450px'
-            }">
+            <h1>Login</h1>
             <div class="field">
                 <label for="username"></label>
-                <input type="text" pInputText formControlName="username"  name="Username" placeholder="Username"/>
-                <small *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
-                class="p-error">
-                    Please enter a valid email
-                </small>
+                <input type="text" pInputText formControlName="username"  class="box" name="Username" placeholder="Username"/>
             </div>
+            <small *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
+            class="p-error">
+                Enter a valid email
+            </small>
             <div class="field">
                 <label for="password"></label>
-                <input type="password" pInputText formControlName="password" class="w-full" name="password" placeholder="Password"/>
-                <small *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
-                class="block p-error">
-                    Please enter a valid password
-                </small>
+                <input type="password" pInputText formControlName="password" class="box" name="password" placeholder="Password"/>
             </div>
-            <div class="field">
+            <small *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+            class="block p-error">
+                Enter a valid password
+            </small>
+            <div class="btn-field">
                 <p-button label="Login" styleClass="w-full"
                 [disabled]="loginForm.invalid" type="Submit"></p-button>
                 
@@ -34,10 +29,8 @@
             <div class="mt-2">
                 Don't have a account? <a routerLink ='/signup'>Register</a>
             </div>
-        </p-card>
         </form>
-        </div>
-        <img src="../../../assets/main page.png" alt="" />
+        </div>      
 </div>
-<!-- </div> -->
+</div>
 <!-- </div> -->

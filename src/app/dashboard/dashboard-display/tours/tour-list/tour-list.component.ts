@@ -6,6 +6,7 @@ import { SuccessResponseInterface } from '../../../../shared/interface/successRe
 import { GetTourList, ItineraryDetails } from '../../../interfaces/get-tours-list.interface';
 import { MessageService } from 'primeng/api';
 import { CustomErrorResponse, ErrorResponse } from '../../../../shared/interface/errorResponse.interface';
+import { UserService } from '../../../../shared/services/user.service';
 
 @Component({
   selector: 'app-tour-list',
@@ -16,7 +17,8 @@ export class TourListComponent {
   dashboardService = inject(DashboardService);
   userBooking = inject(UserBookingService);
   messageService = inject(MessageService);
-  route = inject(Router)
+  route = inject(Router);
+  userService = inject(UserService);
   itineraries: [];
   @Input() singlePackage;
   
@@ -26,11 +28,6 @@ export class TourListComponent {
     this.dashboardService.getItineraries(this.singlePackage.package_name, this.singlePackage.category, this.singlePackage.duration).subscribe({
       next: (data: SuccessResponseInterface<GetTourList<ItineraryDetails>>) =>{
         this.itineraries = data.data[0].itinerary_details;
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: data.message,
-        });
       },
       error: (error: ErrorResponse<CustomErrorResponse>) => {
         this.messageService.add({
@@ -43,8 +40,17 @@ export class TourListComponent {
   }
 
   bookPackage(){
-    this.userBooking.bookingDetails.next(this.singlePackage)
-    this.route.navigate(['bookings', 'new'])
+    this.userBooking.bookingDetails.next(this.singlePackage);
+    this.route.navigate(['bookings', 'new']);
+  }
+
+  getReview(){
+    this.userService.packageId.next(this.singlePackage.packageId);
+    this.route.navigate(['reviews'], {
+      state: {
+        "packageId": this.singlePackage.packageId
+      }
+    });
   }
 
 }

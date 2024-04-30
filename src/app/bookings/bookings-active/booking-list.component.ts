@@ -17,16 +17,23 @@ export class BookingListComponent {
   bookingService = inject(BookingService);
   messageService = inject(MessageService);
   currentBooking: any;
+  display: boolean = false;
+  displayMessage: string = '';
+
 
   ngOnInit(){
     this.bookingService.getActiveBookings().subscribe({
       next: (data: SuccessResponseInterface<[GetBookings]>) =>{
-        this.bookings = data.data;
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: data.message,
-        });
+        console.log(data.data)
+        if(data.data.length){
+          this.bookings = data.data;
+        }
+        else{
+          console.log(data.message);
+          this.display = true;
+          this.displayMessage = data.message;
+        }
+       
       }, 
       error: (error: ErrorResponse<CustomErrorResponse>) => {
         this.messageService.add({
@@ -60,5 +67,9 @@ export class BookingListComponent {
         });
       }
     })
+  }
+
+  parentVisible(){
+    this.updated = false;
   }
 }

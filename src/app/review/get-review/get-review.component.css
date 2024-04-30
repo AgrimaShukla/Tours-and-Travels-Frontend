@@ -1,0 +1,28 @@
+#display{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h1{
+    color: black;
+    text-align: center;
+}
+:host ::ng-deep .p-fieldset{
+    height: 200px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    background-color: rgb(244, 240, 240);
+ 
+
+}
+
+:host ::ng-deep .p-fieldset-legend{
+    background-color: #F6E0BA;
+}
+

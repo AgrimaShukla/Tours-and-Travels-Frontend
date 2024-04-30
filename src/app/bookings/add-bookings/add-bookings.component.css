@@ -1,21 +1,13 @@
 
 :host ::ng-deep .p-dialog-content{
-    background-color: #FFAE42;
     height: 45vw; 
     width: 43vw;
-
-}
-
-:host ::ng-deep .p-dialog-header{
-    background-color: #FFAE42;
 
 }
 
 :host ::ng-deep .p-card-body{
     width: 40vw;  
     height: 35vw;     
-    background-color: #FFAE42; 
-    /* box-sizing: content-box; */
 }
 
 .field{
@@ -25,9 +17,15 @@
 input{
     width: 99%;
 }
+:host ::ng-deep .p-card-title{
+    color: #275657;
+}
 
 p-card[header]{
     width: 360px;
     text-align: center;
 }
 
+:host ::ng-deep .field .p-button{
+    background-color: #275657;
+}

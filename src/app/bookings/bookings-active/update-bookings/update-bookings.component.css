@@ -1,0 +1,18 @@
+
+
+.field{
+    margin-bottom: 1.5rem;
+}
+
+
+:host ::ng-deep .p-card-title{
+    color: #275657;
+}
+
+p-card[header]{
+    text-align: center;
+}
+
+:host ::ng-deep .field .p-button{
+    background-color: #275657;
+}

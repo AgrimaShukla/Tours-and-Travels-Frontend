@@ -1,6 +1,15 @@
 
-img{
-    width: 40%;
+
+.background-image{
+    background-image: url(../../../assets/background-image.jpg);
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+h1{
+    color: white;
 }
 
 .background{
@@ -17,16 +26,36 @@ img{
     margin-top: 100px;
 }
 
-.field{
-    margin-bottom: 1.5rem;
+form{
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 400px;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-input{
-    width: 99%;
+.box{
+    padding: 12px;
+    margin: 5px;
+
 }
 
-p-card[header]{
-    width: 360px;
+.inner{
     text-align: center;
+    width: 30%;
 }
 
+:host ::ng-deep .field .p-button{
+    background-color: rgb(52, 161, 219);
+    border: none; 
+    padding: 15px 30px; 
+    text-align: center; 
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+    transition-duration: 0.4s; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

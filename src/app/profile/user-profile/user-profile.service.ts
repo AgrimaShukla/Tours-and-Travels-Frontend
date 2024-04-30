@@ -16,7 +16,4 @@ export class UserProfile{
             email: email
         })
     }
-    getUser(){
-        return this.http.get('http://localhost:5000/v1/user')
-    }
 }

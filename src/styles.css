@@ -2,5 +2,6 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 body{
-    background-color: black;
+    height: 742px;
+    margin: 0px;
 }

@@ -22,11 +22,12 @@ export class AddBookingsComponent {
   bookingForm: FormGroup;
   visible: boolean = true;
   bookingDetails: any;
+  today;
 
   ngOnInit(){
     this.bookingForm = new FormGroup({
-    'name': new FormControl(null, [Validators.required, Validators.pattern('^([A-Za-z]{2,25}\s*)+')]),
-    'mobileNumber': new FormControl(null, [Validators.required, Validators.pattern('[6-9][0-9]{9}')]),
+    'name': new FormControl(null, [Validators.required]),
+    'mobileNumber': new FormControl(null, [Validators.required]),
     'startDate': new FormControl(null, [Validators.required]),
     'noOfPeople': new FormControl(null, [Validators.required]),
     'email': new FormControl(null, [Validators.required])
@@ -36,12 +37,14 @@ export class AddBookingsComponent {
       this.bookingDetails = data;
     }
   })
+    
   }
-
+  
   onClose(){
+    this.visible = false;
     this.router.navigate(['dashboard'])
   }
-
+  
   onSubmit(form){
     const name = form.value.name;
     const mobileNumber = form.value.mobileNumber;
@@ -65,8 +68,14 @@ export class AddBookingsComponent {
           detail: error.error.description,
         });
       }
-
-  });
+      
+    });
     this.visible = false;
+  }
+  
+  ngAfterViewInit(){
+    this.today = new Date().toISOString().split('T')[0];
+    document.getElementById('startDate').setAttribute('min', this.today);
+
   }
 }

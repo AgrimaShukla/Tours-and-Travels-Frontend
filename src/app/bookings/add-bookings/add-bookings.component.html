@@ -4,40 +4,40 @@
             <p-card header="New Bookings" >
             <div class="field">
                 <input type="text" pInputText formControlName="name" placeholder="Name"/>
-                <small *ngIf="bookingForm.controls['name'].invalid && bookingForm.controls['name'].touched"
-                class="p-error">
-                    Please enter valid Name
-                </small>
             </div>
+            <small *ngIf="bookingForm.controls['name'].invalid && bookingForm.controls['name'].touched"
+            class="p-error">
+                Enter valid Name
+            </small>
 
             <div class="field">
                 <input type="text" pInputText formControlName="mobileNumber" name="mobileNumber" placeholder="Mobile Number"/>
-                <small *ngIf="bookingForm.controls['mobileNumber'].invalid  && bookingForm.controls['mobileNumber'].touched"
-                class="p-error">
-                    Please enter a valid Mobile Number
-                </small>
             </div>
+            <small *ngIf="bookingForm.controls['mobileNumber'].invalid  && bookingForm.controls['mobileNumber'].touched"
+            class="p-error">
+                Enter a valid Mobile Number
+            </small>
             <div class="field">
-                <input type="date" pInputText formControlName="startDate" name="startDate" placeholder="Start Date"/>
-                <small *ngIf="bookingForm.controls['startDate'].invalid  && bookingForm.controls['startDate'].touched"
-                class="p-error">
-                    Please enter a valid Date
-                </small>
+                <input type="date" pInputText formControlName="startDate" id="startDate" name="startDate" placeholder="Start Date" min="2024-05-05"/>
             </div>
+            <small *ngIf="bookingForm.controls['startDate'].invalid  && bookingForm.controls['startDate'].touched"
+            class="p-error">
+                Enter a valid Date
+            </small>
             <div class="field">
                 <input type="number" pInputText formControlName="noOfPeople" name="noOfPeople" placeholder="Number of People"/>
-                <small *ngIf="bookingForm.controls['noOfPeople'].invalid  && bookingForm.controls['noOfPeople'].touched"
-                class="p-error">
-                    Please enter a valid value
-                </small>
             </div>
+            <small *ngIf="bookingForm.controls['noOfPeople'].invalid  && bookingForm.controls['noOfPeople'].touched"
+            class="p-error">
+                Enter a valid value
+            </small>
             <div class="field">
                 <input type="email" pInputText formControlName="email" name="email" placeholder="Email"/>
-                <small *ngIf="bookingForm.controls['email'].invalid  && bookingForm.controls['email'].touched"
-                class="p-error">
-                    Please enter a valid email
-                </small>
             </div>
+            <small *ngIf="bookingForm.controls['email'].invalid  && bookingForm.controls['email'].touched"
+            class="p-error">
+                Enter a valid email
+            </small>
             <div class="field">
                 <p-button label="Submit" 
                 [disabled]="bookingForm.invalid" type="Submit"></p-button>

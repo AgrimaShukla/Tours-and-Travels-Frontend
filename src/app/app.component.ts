@@ -14,15 +14,13 @@ export class AppComponent {
 
   router = inject(Router);
   activeRoute = inject(ActivatedRoute);
-  isLogged: boolean = false;
-  userService = inject(UserService)
-  items: [{}];
+  userService = inject(UserService);
+
   ngOnInit(){
-    
-    this.userService.isLoggedIn.subscribe({
-      next: (value: boolean) => {
-        this.isLogged = value;
-      }
-    })
+  }
+  
+  getCurrentRoute(): Boolean {
+    if (this.router.url === "/login" || this.router.url === '/signup') return false;
+    else return true;
   }
 }

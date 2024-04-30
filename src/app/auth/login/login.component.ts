@@ -40,10 +40,10 @@ export class LoginComponent implements OnInit{
       next: (result: SuccessResponseInterface<[LoginInterface]>) => {
         sessionStorage.setItem('accessToken', result.data[0].access_token)
         sessionStorage.setItem('refreshToken', result.data[0].refresh_token)
-        this.userService.isLoggedIn.next(true);
+        this.getUser()
         this.messageService.add({
           severity: 'success',
-          summary: 'Sucess',
+          summary: 'Success',
           detail: result.message,
         });
       },
@@ -55,31 +55,30 @@ export class LoginComponent implements OnInit{
         });
       }
     });
-   
-    if(sessionStorage.getItem('accessToken')){
-      this.userService.getRole().subscribe({
-        next: (userData: SuccessResponseInterface<UserInterface>) => {
-          console.log(userData)
-          sessionStorage.setItem('userData', JSON.stringify(userData.data))
-          // this.userService.user.next(userData.data);
-          this.role = JSON.parse(sessionStorage.getItem('userData')).role;
-          console.log(this.role)
-          if(this.role == 'admin'){
-            this.router.navigate(['/packages'])
-          }
-          else if(this.role == 'user'){
-            this.router.navigate(['/dashboard'])
-          }
-        },
-        error: (error: ErrorResponse<CustomErrorResponse>) => {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: error.error.description,
-            });
-          }
-      })
-    }
+ 
+    this.authService.isLoggedIn.next(true);
   }
-}
 
+
+    getUser(){
+            this.userService.getUserProfile().subscribe({
+              next: (userData: SuccessResponseInterface<UserInterface>) => {
+                sessionStorage.setItem('userData', JSON.stringify(userData.data))
+                this.role = JSON.parse(sessionStorage.getItem('userData')).role;
+                if(this.role == 'admin'){
+                  this.router.navigate(['/packages'])
+                }
+                else if(this.role == 'user'){
+                  this.router.navigate(['/dashboard'])
+                }
+              },
+              error: (error: ErrorResponse<CustomErrorResponse>) => {
+                  this.messageService.add({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: error.error.description,
+                  });
+                }
+            })
+          }
+        }

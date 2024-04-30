@@ -2,8 +2,13 @@
     margin: 50px;
 }
 
+h1{
+    color: black;
+    text-align: center;
+}
+
 .btn-style{
-    background-color: #9FAA13; 
+    background-color: #275657; 
     border: none;
     color: white;
     padding: 15px 32px;

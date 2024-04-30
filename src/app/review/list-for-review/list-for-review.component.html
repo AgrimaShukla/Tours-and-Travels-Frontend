@@ -1,0 +1,34 @@
+<router-outlet></router-outlet>
+<h1>Reviews</h1>
+<div class="outer" *ngIf="bookings">
+<p-table
+    [value]="bookings"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[5, 10, 20]"
+>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:25%">Booking ID</th>
+            <th style="width:25%">Start date</th>
+            <th style="width:25%">End date</th>
+            <th style="width:25%">Add Review</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bookings>
+        <tr>
+            <td>{{ bookings.booking_id }}</td>
+            <td>{{ bookings.start_date }}</td>
+            <td>{{ bookings.end_date }}</td>
+            <td><button class='btn-style' (click)="addReview(bookings.booking_id, bookings.package_id)">Add Review</button></td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
+
+<div *ngIf="currentBooking">
+    <app-create-review [booking]="currentBooking"></app-create-review>
+</div>

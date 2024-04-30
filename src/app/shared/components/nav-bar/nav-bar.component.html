@@ -1,9 +1,16 @@
 
   <p-menubar [model]="items" class='nav-bar'>
     <ng-template pTemplate="start">
-      
+      <p-button
+        icon="pi pi-angle-left"
+      ></p-button>
+      <img
+        src="./../../../../assets/MaharashtraTours.png"
+        height="40"
+        class="logo"
+      />
     </ng-template>
     <ng-template pTemplate="end">
-      <button (click)='logoutUser()' class="button-style">Logout</button> 
+      <button *ngIf="this.role === 'admin' || this.role === 'user' " (click)='logoutUser()' class="button-style">Logout</button> 
     </ng-template>
   </p-menubar>

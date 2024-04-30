@@ -34,10 +34,10 @@
 }
 
 :host ::ng-deep .outer .p-button{
-    background-color: #FFAE42; 
+    background-color: #275657;; 
     border: none; 
+    margin: 10px;
     color: white; 
-    margin-left: 85vh;
     padding: 15px 30px; 
     text-align: center; 
     font-size: 16px; 
@@ -46,6 +46,11 @@
     transition-duration: 0.4s; 
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
 }
+
+.btn {
+    display: flex;
+    justify-content: center; 
+  }
 @media only screen and (max-width: 767px) {
     :host ::ng-deep .p-card {
         max-width: none;

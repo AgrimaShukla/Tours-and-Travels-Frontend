@@ -1,0 +1,12 @@
+.outer{
+    margin: 50px;
+}
+
+h1{
+    color: black;
+    text-align: center;
+}
+
+:host ::ng-deep .p.p-datatable-table .p-datatable-thead{
+   color: #3d7a7b;
+}

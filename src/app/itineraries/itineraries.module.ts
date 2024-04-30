@@ -14,9 +14,9 @@ import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
+    AddItinerariesComponent,
     UpdateItinerariesComponent,
-    ItinerariesListComponent,
-    AddItinerariesComponent
+    ItinerariesListComponent
   ],
   imports: [
     CommonModule,

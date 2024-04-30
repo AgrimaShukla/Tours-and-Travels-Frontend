@@ -65,6 +65,7 @@ export class AddPackageComponent {
   }
 
   onClose(){
+    this.visible = false;
     this.router.navigate(['packages'])
   }
 }

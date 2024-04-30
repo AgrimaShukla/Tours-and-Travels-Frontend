@@ -1,5 +1,5 @@
-
-<div class="outer">
+<h1>Your Active Bookings</h1>
+<div class="outer" *ngIf="bookings">
 <p-table
     [value]="bookings"
     [paginator]="true"
@@ -33,14 +33,14 @@
             <td>{{ bookings.end_date }}</td>
             <td>{{ bookings.mobile_number }}</td>
             <td>{{ bookings.no_of_people }}</td>
-            <td><button (click)="update(bookings)">Update</button></td>
-            <td><button (click)="cancel(bookings)">Cancel</button></td>
+            <td><button (click)="update(bookings)" class="btn-style">Update</button></td>
+            <td><button (click)="cancel(bookings)" class="btn-style btn-style-cancel">Cancel</button></td>
 
         </tr>
     </ng-template>
 </p-table>
 </div>
-
+<div *ngIf="display"><p id="display">{{displayMessage}}</p></div>
 <div *ngIf="updated">
-    <app-update-bookings [booking]="currentBooking"></app-update-bookings>
+    <app-update-bookings [booking]="currentBooking" (parent) = parentVisible()></app-update-bookings>
 </div>

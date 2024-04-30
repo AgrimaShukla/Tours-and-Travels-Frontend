@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PackageService } from '../../package.service';
@@ -22,12 +22,15 @@ export class UpdatePackageComponent {
   packageItem: any;
   updateClicked: boolean = true;
   @Input() package: GetPackage;
+  @Output() parent = new EventEmitter<null>();
 
   ngOnInit(){
-    // this.statusValue = ['activated', 'deactivated']
+
+    console.log("heyyy")
+    this.visible = true;
     this.packageForm = new FormGroup({
-      'packageName': new FormControl(null, [Validators.required, Validators.pattern('^([A-Za-z]{2,25}\s*)+')]),
-      'duration': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z0-9._]{2,30}')]),
+      'packageName': new FormControl(null, [Validators.required]),
+      'duration': new FormControl(null, [Validators.required]),
       'category': new FormControl(null, [Validators.required]),
       'price': new FormControl(null, [Validators.required]),
       'status': new FormControl(null, [Validators.required])
@@ -39,7 +42,6 @@ export class UpdatePackageComponent {
       category: this.package.category,
       price: this.package.price,
     })
-
 }
 
   onSubmit(form){
@@ -65,9 +67,11 @@ export class UpdatePackageComponent {
       }
     })
     this.visible = false;
+    this.parent.emit();
   }
 
   onClose(){
     this.visible = false
+    this.parent.emit();
   }
 }

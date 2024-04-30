@@ -1,25 +1,39 @@
 <p-dialog  (onHide)= 'onClose()' [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}">
     <div class="outer">
-       
-    
         <form [formGroup]="packageForm" (ngSubmit)="onSubmit(packageForm)">
             <p-card header="Package Details">
             <div class="field">
                 <label for="packageName">Package Name</label>
                 <input type="text" pInputText formControlName="packageName"  name="packageName" placeholder="Package Name"/>
             </div>
+            <small *ngIf="packageForm.controls['packageName'].invalid  && packageForm.controls['packageName'].touched"
+            class="p-error">
+                Enter a valid email
+            </small>
             <div class="field">
                 <label for="duration">Duration</label>
                 <input type="text" pInputText formControlName="duration" name="duration" placeholder="Duration"/>
             </div>
+            <small *ngIf="packageForm.controls['duration'].invalid  && packageForm.controls['duration'].touched"
+            class="p-error">
+                Enter a valid email
+            </small>
             <div class="field">
                 <label for="category">Category</label>
                 <input type="text" pInputText formControlName="category" name="category" placeholder="category"/>
             </div>
+            <small *ngIf="packageForm.controls['category'].invalid  && packageForm.controls['category'].touched"
+            class="p-error">
+                Enter a valid email
+            </small>
             <div class="field">
                 <label for="price">Price</label>
                 <input type="number" pInputText formControlName="price" name="price" placeholder="price"/>
             </div>
+            <small *ngIf="packageForm.controls['price'].invalid  && packageForm.controls['price'].touched"
+            class="p-error">
+                Enter a valid email
+            </small>
             <div class="field">
                 
                  <div class="p-field-radiobutton">
@@ -33,14 +47,13 @@
                         name="status"
                         class="radio-button"
                     ></p-radioButton>
-
+                 </div>
                 </div>
             <div class="field">
-                <p-button label="Submit" 
-                [disabled]="packageForm.invalid" type="Submit"></p-button>
+                <p-button [disabled]="packageForm.invalid" label="Submit"  type="Submit"></p-button>
                 
             </div>
-        <!-- </p-card>
+        </p-card> 
         </form>
         </div>
-</p-dialog> -->
+</p-dialog>

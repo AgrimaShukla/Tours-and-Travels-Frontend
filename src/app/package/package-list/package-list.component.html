@@ -1,4 +1,4 @@
-<router-outlet></router-outlet>
+<h1>Packages</h1>
 <div class="outer">
 <p-table
     [value]="packages"
@@ -28,12 +28,12 @@
             <td>{{ packages.category }}</td>
             <td>{{ packages.price }}</td>
             <td>{{ packages.status }}</td>
-            <td><button class='btn-style' (click)="update(packages, packages.package_id)">Update</button></td>
+            <td><button class='btn-style' (click)="update(packages)">Update</button></td>
         </tr>
     </ng-template>
 </p-table>
 </div>
 
 <div *ngIf="updateClicked">
-    <app-update-package [package]="currentPackage"></app-update-package>
+    <app-update-package [package]="currentPackage" (parent)="parentVisible()"></app-update-package>
 </div>

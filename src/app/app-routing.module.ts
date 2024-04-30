@@ -3,7 +3,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./auth/login/login.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { UserProfileComponent } from "./profile/user-profile/user-profile.component";
-import { DashboardComponent } from "./dashboard/dashboard-display/dashboard.component";
 import { authGuard } from "./shared/guards/auth.guard";
 import { UserGuard } from "./shared/guards/user-role.guard";
 import { AdminGuard } from "./shared/guards/admin-role.guard";
@@ -46,6 +45,11 @@ const routes: Routes = [
     {
         path:'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(mod => mod.DashboardModule),
+        canActivate: [authGuard, UserGuard]
+    },
+    {
+        path: 'reviews',
+        loadChildren: () => import('./review/review.module').then(mod => mod.ReviewModule),
         canActivate: [authGuard, UserGuard]
     }
     

@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
     providedIn: "root"
@@ -10,6 +11,7 @@ export class AuthService{
     http = inject(HttpClient)
     router = inject(Router)
     loginStatus = false;
+    isLoggedIn = new BehaviorSubject<boolean>(false);
 
     login(username, password){
         return this.http.post('http://localhost:5000/v1/signin', {username: username, password: password})

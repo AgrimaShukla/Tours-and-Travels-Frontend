@@ -1,9 +1,15 @@
 
 .card-display{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
  
+h1{
+    color: black;
+    text-align: center;
+}
+
 :host ::ng-deep .p-card{
     color: black;
     height: 350px;
@@ -40,7 +46,7 @@
 }
 
 :host ::ng-deep .p-card-body .p-button{
-    background-color: #FFAE42; 
+    background-color: #275657; 
     border: none; 
     color: white; 
     padding: 15px 30px; 

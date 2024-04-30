@@ -22,11 +22,6 @@ export class DashboardComponent {
       this.dashboardService.getPackageType().subscribe({
         next: (data: SuccessResponseInterface<[GetPackageType]>) => {
           this.packageName = data.data;
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: data.message,
-          });
         }, 
         error: (error: ErrorResponse<CustomErrorResponse>) => {
           this.messageService.add({

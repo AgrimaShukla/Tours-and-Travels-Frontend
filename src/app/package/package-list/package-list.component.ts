@@ -22,14 +22,10 @@ export class PackageListComponent {
   messageService = inject(MessageService);
 
   ngOnInit(){
+    this.updateClicked = false;
     this.packageService.getPackages().subscribe({
       next: (data: SuccessResponseInterface<[GetPackage]>) => {
         this.packages = data.data;
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: data.message,
-        });
       },
       error: (error: ErrorResponse<CustomErrorResponse>) => {
         this.messageService.add({
@@ -45,5 +41,9 @@ export class PackageListComponent {
   update(packages){
     this.updateClicked = true;
     this.currentPackage = packages;
+  }
+
+  parentVisible(){
+    this.updateClicked = false;
   }
 }

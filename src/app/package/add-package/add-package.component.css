@@ -1,16 +1,25 @@
-:host ::ng-deep .p-dialog{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
 
-:host ::ng-deep .p-radioButton-label-active{
-    color: #FFAE42;
-} 
+:host ::ng-deep .p-dialog-content{
+    background-color: #FFAE42;
+    /* height: 45vw;  */
+    width: 50vw;
+
+}
+
+:host ::ng-deep .p-dialog-header{
+    background-color: #FFAE42;
+
+}
+
+:host ::ng-deep .p-card-body{
+    width: 47vw;  
+    height: 35vw;     
+    background-color: #FFAE42; 
+    /* box-sizing: content-box; */
+}
 
 .field{
-    padding: 5px;
+    margin-bottom: 1.5rem;
 }
 
 input{
@@ -18,6 +27,20 @@ input{
 }
 
 p-card[header]{
-    width: 360px;
+    width: 150px;
     text-align: center;
+}
+
+:host ::ng-deep .field .p-button{
+    background-color: black;
+    border: none; 
+    color: white; 
+    padding: 15px 30px; 
+    text-align: center; 
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+    transition-duration: 0.4s; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    margin-left: 45px;
 }

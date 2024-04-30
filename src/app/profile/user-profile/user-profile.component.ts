@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserProfile } from './user-profile.service';
+import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { SuccessResponseInterface } from '../../shared/interface/successResponse.interface';
 import { UserInterface } from './interfaces/user.interface';
@@ -19,7 +20,8 @@ export class UserProfileComponent {
   profileService = inject(UserProfile);
   route = inject(Router);
   messageService = inject(MessageService);
-
+  userService = inject(UserService);
+  
   ngOnInit(){
     this.userForm = new FormGroup({
       'name': new FormControl(null, [Validators.required]),
@@ -41,7 +43,6 @@ export class UserProfileComponent {
   }
 
   updateUser(form){
-    // console.log(JSON.parse(sessionStorage.getItem('userData')).customer_id)
     this.userId = JSON.parse(sessionStorage.getItem('userData')).customer_id;
     this.profileService.updateUser(form.value.name, form.value.mobileNumber, form.value.gender, form.value.age, form.value.email, this.userId).subscribe({
       next: (data: SuccessResponseInterface<null>) => {
@@ -59,7 +60,7 @@ export class UserProfileComponent {
         });
       }
     });
-    this.profileService.getUser().subscribe({
+    this.userService.getUserProfile().subscribe({
       next: (data: SuccessResponseInterface<UserInterface>) =>{
         sessionStorage.setItem('userData', JSON.stringify(data.data));
         this.route.navigate['profile'];

@@ -11,13 +11,16 @@
         <ng-template pTemplate="header">
             <img
             alt="Card image"
-            src="../../assets/tour.jpg"
+            src="../../../../../assets/dashboard.png"
             />
         </ng-template>
         
     </p-card>
 </div>
 </div>
+<div class="btn">
     <p-button label="Book Package" (click)="bookPackage()"></p-button>
+    <p-button label="See Reviews" class="review-button" (click)="getReview()"></p-button>
+</div>
 </div>
 <router-outlet></router-outlet>

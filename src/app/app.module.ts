@@ -12,10 +12,13 @@ import { SharedModule } from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastModule } from 'primeng/toast';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { GetReviewComponent } from './review/get-review/get-review.component';
+import { CreateReviewComponent } from './review/list-for-review/create-review/create-review.component';
+import { ReviewModule } from './review/review.module';
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AuthModule,
     HttpClientModule,
     UserProfileModule,
-    DashboardModule
+    DashboardModule,
+    ReviewModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]

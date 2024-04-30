@@ -1,0 +1,11 @@
+<h1>Reviews</h1>
+<div *ngFor = "let review of reviews" id="display">
+<p-fieldset>
+    <ng-template pTemplate="header" >
+        <div id="title" class="flex align-items-center gap-2 px-2">
+            <span class="font-bold">{{review.name}}</span>
+        </div>
+    </ng-template>
+    <p>{{review.comment}}</p>
+</p-fieldset>
+</div>
